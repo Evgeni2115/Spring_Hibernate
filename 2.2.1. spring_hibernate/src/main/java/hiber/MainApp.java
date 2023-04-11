@@ -31,11 +31,9 @@ public class MainApp {
       userService.add(user3.setCar(kia).setUser(user3));
       userService.add(user4.setCar(landRover).setUser(user4));
 
-
-      for (User user : userService.listUsers()) {
+      for (User user : userService.getListUser()) {
          System.out.println(user + " " + user.getCar());
       }
-
 
       System.out.println(userService.getUserCar("BMW", 5));
 

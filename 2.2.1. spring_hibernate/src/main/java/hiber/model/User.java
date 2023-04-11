@@ -1,9 +1,13 @@
 package hiber.model;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "user")
+@Component
 public class User {
 
    @Id
@@ -66,7 +70,7 @@ public class User {
    public Car getCar() {
       return car;
    }
-
+   @Autowired
    public Car setCar(Car car) {
       this.car = car;
       return car;
@@ -80,5 +84,17 @@ public class User {
               ", lastName='" + lastName + '\'' +
               ", email='" + email + '\'' +
               '}';
+   }
+
+   public boolean equals(Object object) {
+      if (this == object) return true;
+      if (object == null || getClass() != object.getClass()) return false;
+      if (!super.equals(object)) return false;
+      User user = (User) object;
+      return java.util.Objects.equals(id, user.id) && java.util.Objects.equals(firstName, user.firstName) && java.util.Objects.equals(lastName, user.lastName) && java.util.Objects.equals(email, user.email) && java.util.Objects.equals(car, user.car);
+   }
+
+   public int hashCode() {
+      return java.util.Objects.hash(super.hashCode(), id, firstName, lastName, email, car);
    }
 }

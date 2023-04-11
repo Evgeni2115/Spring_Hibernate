@@ -1,9 +1,12 @@
 package hiber.model;
 
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "cars")
+@Component
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -68,5 +71,17 @@ public class Car {
                 ", model='" + model + '\'' +
                 ", series=" + series +
                 '}';
+    }
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        Car car = (Car) object;
+        return series == car.series && java.util.Objects.equals(id, car.id) && java.util.Objects.equals(model, car.model) && java.util.Objects.equals(user, car.user);
+    }
+
+    public int hashCode() {
+        return java.util.Objects.hash(super.hashCode(), id, series, model, user);
     }
 }
