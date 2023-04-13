@@ -7,7 +7,6 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "user")
-@Component
 public class User {
 
    @Id
@@ -70,7 +69,7 @@ public class User {
    public Car getCar() {
       return car;
    }
-   @Autowired
+
    public Car setCar(Car car) {
       this.car = car;
       return car;
