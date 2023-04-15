@@ -13,6 +13,7 @@ public class UserServiceImp implements UserService {
 
 
    private UserDao userDao;
+
    @Autowired
    public UserServiceImp(UserDao userDao) {
       this.userDao = userDao;
@@ -27,7 +28,7 @@ public class UserServiceImp implements UserService {
    @Transactional(readOnly = true)
    @Override
    public List<User> getListUser() {
-      return userDao.listUsers();
+      return userDao.getListUsers();
    }
 
    @Transactional(readOnly = true)
